@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/c_header :: cheader"></head>
+<script th:src="@{/static/js/corpus.js}" src="/static/js/corpus.js"></script>
+<body class="layui-layout-body" scroll="no" style="dispaly:block">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layui-fluid">
+                <div class="layui-col-md12">
+                    <div class="layui-form-item">
+                        <div class="layui-card upYuanjiao">
+                            <div class="layui-card-body">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 100px">用户账号</label>
+                                    <div class="layui-input-inline" style="width: 190px;">
+                                        <input type="text" id="username" name="username" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn gerren_btn"  id="do_search" type="button" lay-filter="component-form-element">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12 ">
+                    <div class="layui-card downYuanjiao">
+                        <table class="layui-table" id="corpusTableId" lay-filter="corpus" style="display: none">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="corid" style="margin-top: 17px;display: none;">
+            <form class="layui-form" id="corform" method="post">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="name" name="name" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">生日</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="birthday" name="birthday" class="layui-input" style="width: 85%">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">创建时间</label>
+                <div class="layui-input-block">
+                    <input readonly type="text" id="createTime" name="createTime" class="layui-input" style="width: 85%">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">场景</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="scene" name="scene" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">操作物</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="opeThing" name="opeThing" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">刺激语种</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="excLanguage" name="excLanguage" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">背景语种</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="bgLanguage" name="bgLanguage" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="keywords" name="keywords" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <textarea readonly id="remarks" name="remarks" class="layui-input" style="width:85%;height:80px"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文件名称</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="mediaName" name="mediaName" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    layui.use('table', function(){
+        userTable();
+    });
+</script>
+</body>
+</html>

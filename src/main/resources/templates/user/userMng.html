@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/c_header :: cheader"></head>
+<script th:src="@{/static/js/user.js}" src="/static/js/user.js"></script>
+<body class="layui-layout-body" scroll="no" style="dispaly:block">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layui-fluid">
+                <div class="layui-col-md12">
+                    <div class="layui-form-item">
+                        <div class="layui-card upYuanjiao">
+                            <div class="layui-card-body">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 100px">用户账号</label>
+                                    <div class="layui-input-inline" style="width: 190px;">
+                                        <input type="text" id="username1" name="username1" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn gerren_btn"  id="do_search" type="button" lay-filter="component-form-element">查询</button>
+                                    <button class="layui-btn gerren_btn"  type="button" lay-filter="component-form-element" onclick="show()">添加</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12 ">
+                    <div class="layui-card downYuanjiao">
+                        <table class="layui-table" id="userTableId" lay-filter="users" style="display: none">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="uid" style="margin-top: 17px;display: none;">
+            <form class="layui-form" id="uform" method="post">
+                <input type="hidden" id="userId" name="userId">
+                <input type="hidden" id="token" name="token">
+                <input type="hidden" id="type" name="type">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户账号</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="username" name="username" required  lay-verify="required" maxlength="20" placeholder="用户名" autocomplete="off" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div id="pwdAble" class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" id="password" name="password" required lay-verify="required" maxlength="20" placeholder="密码为6-20位，英文与数字组合" style="width: 85%" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号状态</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="status" value="1" title="正常" checked>
+                        <input type="radio" name="status" value="0" title="注销">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    layui.use('table', function(){
+        userTable();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div  th:fragment="ctop"  xmlns:th="http://www.thymeleaf.org">
+    <div class="layui-header bgimg">
+        <!-- 头部区域 -->
+        <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+            <li class="layui-nav-item" lay-unselect>
+                <a href="javascript:;">
+                    <cite th:text="${name}"></cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <!--<dd><a lay-href="set/user/info.html">基本资料</a></dd>-->
+                    <!--<dd><a href="/users/openPwd" target="allList">修改密码</a></dd>-->
+                    <!--<hr>-->
+                    <dd layadmin-event="" style="text-align: center;"><a href="/logout">退出</a></dd>
+                </dl>
+            </li>
+
+            <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-more-vertical"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>

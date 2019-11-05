@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/c_header :: cheader"></head>
+<script th:src="@{/static/lib/treetable.js}" src="/static/lib/treetable.js"></script>
+<script th:src="@{/static/js/res.js}" src="/static/js/res.js"></script>
+<body class="layui-layout-body" scroll="no" style="dispaly:block">
+
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layui-fluid">
+                <div class="layui-card">
+                    <div class="layui-col-md12">
+                        <div class="layui-form-item">
+                            <div class="layui-card upYuanjiao">
+                                <div class="layui-card-body">
+                                    <button class="layui-btn gerren_btn down-all" onclick="showmodel('0')">添加主菜单</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card downYuanjiao">
+                            <table class="layui-table layui-form" lay-filter="res-tree-table" id="res-tree-table"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="menuId" style="margin-top: 17px;display: none;">
+            <form class="layui-form" id="menuForm" method="post">
+                <input type="text" name="resourceId" id="resourceId" style="display:none">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">父级菜单ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="parentId" name="parentId" lay-verify="required" style="width: 85%"
+                               placeholder="请输入父级菜单ID" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">菜单名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="resourceName" name="resourceName" lay-verify="required" style="width: 85%"
+                               placeholder="请输入菜单名称(必填)" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">链接地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="resourceUrl" name="resourceUrl" lay-verify="required" style="width: 85%"
+                               placeholder="请输入链接地址(必填)" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">权限标识</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="permission" name="permission" lay-verify="required" placeholder="请输入权限标识(必填)" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">小图标样式</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="icon" name="icon" placeholder="请输入小图标样式" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">序号</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="resourceOrder" name="resourceOrder" placeholder="请输入排序号" style="width: 85%"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">菜单级别</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="resourceLevel" name="resourceLevel" lay-verify="required" style="width: 85%"
+                               placeholder="请输入菜单级别(必填):主菜单(1),子菜单(2)" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    layui.config({
+        base: '/static/module/'
+    }).extend({
+        treetable: 'treetable-lay/treetable'
+    })
+    layui.use('table', function(){
+        treetalbe();
+    });
+</script>
+
+<script type="text/html" id="oper-col">
+    <a class="layui-btn gerren_btn layui-btn-xs" lay-event="add">添加子菜单</a>
+    <a class="layui-btn gerren_btn layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn red_btn layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn gerren_btn layui-btn-xs" lay-event="detail">详情</a>
+</script>
+
+</body>
+</html>

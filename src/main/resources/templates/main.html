@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+	  
+<head th:include="common/c_header :: cheader"></head>
+<body class="layui-layout-body">
+
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <!--<div th:include="common/c_top :: ctop"></div>-->
+        <!-- 侧边菜单 -->
+        <div th:include="common/c_left :: cleft"></div>
+        <!-- 主体内容 -->
+
+        <div  class="main heightIframe" style="position: relative;">
+            <iframe src=""  id="iframeId" frameborder="0" width="100%" height="100%" scrolling="no" name="allList" align="right" style="dispaly:block; vertical-align:bottom;">
+
+            </iframe>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $(window).resize(function() {
+            var a=$(window).height();//窗口高度
+            document.documentElement.clientHeight*0.33 + "px"
+            var b=a;//窗口高度减去导航栏，这个按照实际情况来。
+            var c=$(window).width();//窗口宽度
+            $(".heightIframe").height(b).width(c);//外层div的高宽。
+            $("#heightIframe").height(b);
+        });
+        $(window).resize();//随着窗口的变动而变动
+    });
+</script>
+</body>
+</html>

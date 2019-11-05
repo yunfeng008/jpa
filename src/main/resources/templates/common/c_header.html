@@ -1,0 +1,51 @@
+<div  th:fragment="cheader"  xmlns:th="http://www.thymeleaf.org">
+        <meta charset="UTF-8">
+        <meta name="viewport" ontent="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+        <title th:text="管理平台"></title>
+        <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}">
+        <link rel="stylesheet" th:href="@{/static/css/admin.css}">
+        <script th:src="@{/static/lib/jquery.min.js}"></script>
+        <script th:src="@{/static/lib/StringBuffer.js}"></script>
+        <script th:src="@{/static/layui/layui.js}"></script>
+        <script th:src="@{/static/layui/config.js}"></script>
+        <script>
+            $(document).ready(function(){
+                $(window).resize(function() {
+                    var b =document.documentElement.clientHeight*0.92 + "px"
+                    $(".divHeight").height(b);//外层div的高宽。
+
+                    var b =document.documentElement.clientHeight*0.88 + "px"
+                    $(".divHeight2").height(b);//外层div的高宽。
+
+                    var b =document.documentElement.clientHeight*0.97 + "px"
+                    $(".divHeight3").height(b);//外层div的高宽。
+
+                    var b =document.documentElement.clientHeight*0.85 + "px"
+                    $(".divHeight4").height(b);//外层div的高宽。
+
+                    var b =document.documentElement.clientHeight*0.95 + "px"
+                    $(".divHeight5").height(b);//外层div的高宽。
+
+
+                    var b =document.documentElement.clientHeight + "px"
+                    $(".divHeightFull").height(b);//外层div的高宽。
+                });
+                $(window).resize();//随着窗口的变动而变动
+            });
+        </script>
+        <script>
+            //全局的ajax访问，处理ajax清求时session超时
+            $.ajaxSetup({
+                contentType:"application/x-www-form-urlencoded;charset=utf-8",
+                complete:function(XMLHttpRequest,textStatus){
+                    //通过XMLHttpRequest取得响应头，sessionstatus，
+                    var sessionstatus=XMLHttpRequest.getResponseHeader("session-status");
+                    if(sessionstatus=="timeout"){
+                        //如果超时就处理 ，指定要跳转的页面(比如登陆页)
+                        window.location.replace("/");
+                    }
+                }
+            });
+        </script>
+</div>

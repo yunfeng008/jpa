@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="common/c_header :: cheader"></head>
+<script th:src="@{/static/js/biometa.js}" src="/static/js/biometa.js"></script>
+<body class="layui-layout-body" scroll="no" style="dispaly:block">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layui-fluid">
+                <div class="layui-col-md12">
+                    <div class="layui-form-item">
+                        <div class="layui-card upYuanjiao">
+                            <div class="layui-card-body">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label" style="width: 100px">用户账号</label>
+                                    <div class="layui-input-inline" style="width: 190px;">
+                                        <input type="text" id="username" name="username" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn gerren_btn"  id="do_search" type="button" lay-filter="component-form-element">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12 ">
+                    <div class="layui-card downYuanjiao">
+                        <table class="layui-table" id="biometaTableId" lay-filter="biometa" style="display: none">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="biometaid" style="margin-top: 17px;display: none;">
+            <form class="layui-form" id="biometaform" method="post">
+                <input type="hidden" id="baseinfoId" name="baseinfoId">
+                <input type="hidden" id="userId" name="userId">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">父亲姓名</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="faName" name="faName" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">父亲生日</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="faBirthday" name="faBirthday" class="layui-input" style="width: 85%">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">母亲姓名</label>
+                <div class="layui-input-block">
+                    <input readonly type="text" id="maName" name="maName" class="layui-input" style="width: 85%">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">母亲生日</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="maBirthday" name="maBirthday" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">孩子姓名</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="childName" name="childName" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">孩子性别</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="childSex" name="childSex" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">孩子小名</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="childhoodName" name="childhoodName" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">孩子生日</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="childBirthday" name="childBirthday" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">孩子关系</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="childRelation" name="childRelation" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生地址</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="birthAddress" name="birthAddress" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">其他情况</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="otherThing" name="otherThing" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生周数</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="birthWeeks" name="birthWeeks" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">家庭住址</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="familyAddress" name="familyAddress" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">常住人口数</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="population" name="population" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">长期陪伴者</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="companion" name="companion" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">第一语言</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="firstLanguage" name="firstLanguage" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">家族语言</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="familyLanguage" name="familyLanguage" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">房屋面积</label>
+                    <div class="layui-input-block">
+                        <input readonly type="text" id="houseArea" name="houseArea" class="layui-input" style="width: 85%">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    layui.use('table', function(){
+        userTable();
+    });
+</script>
+</body>
+</html>

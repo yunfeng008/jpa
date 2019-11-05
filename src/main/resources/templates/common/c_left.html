@@ -1,0 +1,46 @@
+<div  th:fragment="cleft"  xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+    <div class="layui-side layui-side-menu">
+        <div class="layui-side-scroll">
+            <div class="layui-logo" style="overflow: unset;">
+                <dd><a href="/users/openBorder" target="allList">语料库管理平台</a></dd>
+                <div style="height: 40px">
+                    <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right" style="margin-top: 25px;">
+                        <li class="layui-nav-item" style="width: 220px;" lay-unselect>
+                            <a href="javascript:;">
+                                <cite th:text="${session.username}"></cite>
+                            </a>
+                            <dl class="layui-nav-child" style="text-align: center;">
+                                <!--<dd><a style="color: #000;" href="/users/openPwd" target="allList">修改密码</a></dd>-->
+                                <!--<hr>-->
+                                <dd layadmin-event="" style="text-align: center;"><a style="color: #000;" href="/logout">退出</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
+                lay-filter="layadmin-system-side-menu">
+                <li th:each="resource,index : ${session.resourceList}"  data-name="home" class="layui-nav-item layui-nav-itemed">
+                    <shiro:hasPermission  name="${resource.permission}">
+                        <a href="javascript:;" lay-direction="2">
+                            <i th:class="${resource.icon}"></i>
+                            <cite th:text="${resource.resourceName}"></cite>
+                        </a>
+                        <dl class="layui-nav-child layui-this">
+                            <dd style="margin-left: 15px;" th:each="resourceChild,index : ${resource.childList}" data-name="console">
+                                <shiro:hasPermission  name="${resourceChild.permission}">
+                                    <a th:href="${resourceChild.resourceUrl}" target="allList">
+                                        <i th:class="${resourceChild.icon}"></i>
+                                        <cite th:text="${resourceChild.resourceName}"></cite>
+                                    </a>
+                                </shiro:hasPermission>
+                            </dd>
+                        </dl>
+                    </shiro:hasPermission>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
